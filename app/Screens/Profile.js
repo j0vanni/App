@@ -21,7 +21,7 @@ export default function App() {
         <View style={{ alignSelf: "center" }}>
           <View style={styles.profileImage}>
             <Image
-              source={require("./app/assets/profile-pic.png")}
+              source={require("../assets/profile-pic.png")}
               style={styles.image}
               resizeMode="center"
             ></Image>
@@ -81,21 +81,21 @@ export default function App() {
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             <View style={styles.mediaImageContainer}>
               <Image
-                source={require("./app/assets/bunny.jpg")}
+                source={require("../assets/bunny.jpg")}
                 style={styles.image}
                 resizeMode="cover"
               ></Image>
             </View>
             <View style={styles.mediaImageContainer}>
               <Image
-                source={require("./app/assets/tree.jpg")}
+                source={require("../assets/tree.jpg")}
                 style={styles.image}
                 resizeMode="cover"
               ></Image>
             </View>
             <View style={styles.mediaImageContainer}>
               <Image
-                source={require("./app/assets/colorfultree.jpg")}
+                source={require("../assets/colorfultree.jpg")}
                 style={styles.image}
                 resizeMode="cover"
               ></Image>

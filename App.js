@@ -1,8 +1,9 @@
 import React from "react";
 import Profile from "./app/Screens/Profile";
+import LoginScreen from "./app/Screens/LoginScreen";
 
 function App() {
-  return <Profile />;
+  return <LoginScreen />;
 }
 
 export default App;
