@@ -1,3 +1,5 @@
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import {
   StyleSheet,
@@ -9,12 +11,19 @@ import {
 } from "react-native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 
-export default function App() {
+export default function App({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.titleBar}>
-          <Ionicons name="ios-arrow-back" size={24} color="#52575D"></Ionicons>
+          <Ionicons
+            name="ios-arrow-back"
+            size={24}
+            color="#52575D"
+            onPress={() => navigation.navigate("LoginScreen")}
+          >
+            {" "}
+          </Ionicons>
           <Ionicons name="md-more" size={24} color="#52575D"></Ionicons>
         </View>
 
