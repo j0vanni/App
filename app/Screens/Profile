@@ -13,7 +13,7 @@ export default function App() {
 
                 <View style={{ alignSelf: "center" }}>
                     <View style={styles.profileImage}>
-                        <Image source={require("./app/assets/profile-pic.png")} style={styles.image} resizeMode="center"></Image>
+                        <Image source={require("./assets/profile-pic.jpg")} style={styles.image} resizeMode="center"></Image>
                     </View>
                     <View style={styles.dm}>
                         <MaterialIcons name="chat" size={18} color="#DFD8C8"></MaterialIcons>
@@ -25,7 +25,7 @@ export default function App() {
                 </View>
 
                 <View style={styles.infoContainer}>
-                    <Text style={[styles.text, { fontWeight: "200", fontSize: 36 }]}>David</Text>
+                    <Text style={[styles.text, { fontWeight: "200", fontSize: 36 }]}>Julie</Text>
                     <Text style={[styles.text, { color: "#AEB5BC", fontSize: 14 }]}>Photographer</Text>
                 </View>
 
@@ -47,13 +47,13 @@ export default function App() {
                 <View style={{ marginTop: 32 }}>
                     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                         <View style={styles.mediaImageContainer}>
-                            <Image source={require("./app/assets/bunny.jpg")} style={styles.image} resizeMode="cover"></Image>
+                            <Image source={require("./assets/media1.jpg")} style={styles.image} resizeMode="cover"></Image>
                         </View>
                         <View style={styles.mediaImageContainer}>
-                            <Image source={require("./app/assets/tree.jpg")} style={styles.image} resizeMode="cover"></Image>
+                            <Image source={require("./assets/media2.jpg")} style={styles.image} resizeMode="cover"></Image>
                         </View>
                         <View style={styles.mediaImageContainer}>
-                            <Image source={require("./app/assets/colorfultree.jpg")} style={styles.image} resizeMode="cover"></Image>
+                            <Image source={require("./assets/media3.jpg")} style={styles.image} resizeMode="cover"></Image>
                         </View>
                     </ScrollView>
                     <View style={styles.mediaCount}>
