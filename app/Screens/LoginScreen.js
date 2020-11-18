@@ -3,7 +3,10 @@ import * as WebBrowser from "expo-web-browser";
 import { ResponseType } from "expo-auth-session";
 import * as Google from "expo-auth-session/providers/google";
 import firebase from "firebase";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import {
+  Platform,
   Button,
   SafeAreaView,
   Image,
@@ -28,7 +31,8 @@ if (!firebase.apps.length) {
 
 WebBrowser.maybeCompleteAuthSession();
 
-export default function App() {
+export default function App({ navigation: { navigate } }) {
+  const navigation = { navigation };
   const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
     clientId:
       "687366643167-n3c917duo66cs25qsebjngdkjv3quok7.apps.googleusercontent.com",
@@ -40,6 +44,7 @@ export default function App() {
 
       const credential = firebase.auth.GoogleAuthProvider.credential(id_token);
       firebase.auth().signInWithCredential(credential);
+      navigate("Feed");
     }
   }, [response]);
 
@@ -48,19 +53,19 @@ export default function App() {
       source={require("../assets/background.png")}
       style={styles.container}
     >
-      <View style={styles.container}>
-        <TouchableOpacity
-          disabled={!request}
-          onPress={() => {
-            promptAsync();
-          }}
-        >
-          <Image
-            style={{ width: 200, height: 200, resizeMode: "contain" }}
-            source={require("../assets/signingoogle.png")}
-          />
-        </TouchableOpacity>
-      </View>
+      <Image source={require("../assets/Logo.png")} style={styles.logoImage} />
+      <TouchableOpacity
+        disabled={!request}
+        onPress={() => {
+          promptAsync();
+        }}
+        style={styles.loginButton}
+      >
+        <Image
+          style={{ width: 200, height: 200, resizeMode: "contain" }}
+          source={require("../assets/signingoogle.png")}
+        />
+      </TouchableOpacity>
     </ImageBackground>
   );
 }
@@ -71,5 +76,14 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
     alignItems: "center",
     justifyContent: "center",
+  },
+  logoImage: {
+    resizeMode: "cover",
+    width: 350,
+    height: 150,
+  },
+  loginButton: {
+    position: "absolute",
+    bottom: 0,
   },
 });
