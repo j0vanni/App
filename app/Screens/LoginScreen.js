@@ -1,60 +1,65 @@
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
+import * as WebBrowser from "expo-web-browser";
+import { ResponseType } from "expo-auth-session";
+import * as Google from "expo-auth-session/providers/google";
+import firebase from "firebase";
 import {
+  Button,
+  SafeAreaView,
   Image,
-  Platform,
   View,
   StyleSheet,
-  TextInput,
-  Button,
+  TouchableOpacity,
   ImageBackground,
 } from "react-native";
 
-function LoginScreen({ navigation }) {
+if (!firebase.apps.length) {
+  firebase.initializeApp({
+    apiKey: "AIzaSyAv2AYecTmD_Njar4B8jnDT-DbOD-ADQQU",
+    authDomain: "captureprojec.firebaseapp.com",
+    databaseURL: "https://captureprojec.firebaseio.com",
+    projectId: "captureprojec",
+    storageBucket: "captureprojec.appspot.com",
+    messagingSenderId: "613490391108",
+    appId: "1:613490391108:web:e209761f430a2e04b46411",
+    measurementId: "G-FGJ79WYXMS",
+  });
+}
+
+WebBrowser.maybeCompleteAuthSession();
+
+export default function App() {
+  const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
+    clientId:
+      "687366643167-n3c917duo66cs25qsebjngdkjv3quok7.apps.googleusercontent.com",
+  });
+
+  React.useEffect(() => {
+    if (response?.type === "success") {
+      const { id_token } = response.params;
+
+      const credential = firebase.auth.GoogleAuthProvider.credential(id_token);
+      firebase.auth().signInWithCredential(credential);
+    }
+  }, [response]);
+
   return (
     <ImageBackground
       source={require("../assets/background.png")}
-      style={styles.imageBackground}
+      style={styles.container}
     >
       <View style={styles.container}>
-        <TextInput
-          placeholder="username"
-          placeholderTextColor="white"
-          outlineStyle="none"
-          textContentType="username"
-          textAlign="center"
-          style={{
-            textAlign: "center",
-            height: 40,
-            width: Platform.OS === "web" ? 450 : 300,
-            borderColor: "#00c9ff",
-            borderWidth: 1,
-            marginBottom: 10,
-            borderRadius: 10,
+        <TouchableOpacity
+          disabled={!request}
+          onPress={() => {
+            promptAsync();
           }}
-        />
-        <TextInput
-          secureTextEntry={true}
-          placeholder="password"
-          placeholderTextColor="white"
-          textContentType="password"
-          textAlign="center"
-          style={{
-            textAlign: "center",
-            height: 40,
-            width: Platform.OS === "web" ? 450 : 300,
-            borderColor: "#00c9ff",
-            borderWidth: 1,
-            marginBottom: 10,
-            borderRadius: 10,
-          }}
-        />
-        <Button
-          onPress={() => navigation.navigate("Profile")}
-          title="Sign in"
-          color="#0d113c"
-        />
+        >
+          <Image
+            style={{ width: 200, height: 200, resizeMode: "contain" }}
+            source={require("../assets/signingoogle.png")}
+          />
+        </TouchableOpacity>
       </View>
     </ImageBackground>
   );
@@ -62,15 +67,9 @@ function LoginScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
-    justifyContent: "center",
-    flex: 1,
-  },
-  imageBackground: {
     flex: 1,
     resizeMode: "cover",
+    alignItems: "center",
     justifyContent: "center",
   },
 });
-
-export default LoginScreen;
