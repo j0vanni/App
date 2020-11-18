@@ -19,6 +19,8 @@ function LoginScreen({ navigation }) {
     >
       <View style={styles.container}>
         <TextInput
+          placeholder="username"
+          placeholderTextColor="white"
           outlineStyle="none"
           textContentType="username"
           textAlign="center"
@@ -33,6 +35,9 @@ function LoginScreen({ navigation }) {
           }}
         />
         <TextInput
+          secureTextEntry={true}
+          placeholder="password"
+          placeholderTextColor="white"
           textContentType="password"
           textAlign="center"
           style={{
