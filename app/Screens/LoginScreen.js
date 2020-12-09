@@ -44,7 +44,7 @@ export default function App({ navigation: { navigate } }) {
 
       const credential = firebase.auth.GoogleAuthProvider.credential(id_token);
       firebase.auth().signInWithCredential(credential);
-      navigate("Feed");
+      navigate("HomeScreen");
     }
   }, [response]);
 
