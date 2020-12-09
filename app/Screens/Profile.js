@@ -19,114 +19,138 @@ export default function App({ navigation }) {
       source={require("../assets/background.png")}
       style={styles.container}
     >
-    <SafeAreaView>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.titleBar}>
-          <Ionicons
-            name="ios-arrow-back"
-            size={24}
-            color="#52575D"
-            onPress={() => navigation.navigate("LoginScreen")}
-          >
-            {" "}
-          </Ionicons>
-          <Ionicons name="md-more" size={24} color="#52575D"></Ionicons>
-        </View>
-
-        <View style={{ alignSelf: "center" }}>
-          <View style={styles.profileImage}>
-            <Image
-              source={require("../assets/profile-pic.png")}
-              style={styles.image}
-              resizeMode="center"
-            ></Image>
+      <SafeAreaView>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={styles.titleBar}>
+            <Ionicons
+              style={{ marginTop: 20 }}
+              name="ios-arrow-back"
+              size={24}
+              color="#52575D"
+              onPress={() => navigation.navigate("LoginScreen")}
+            >
+              {" "}
+            </Ionicons>
+            <Ionicons
+              style={{ marginTop: 20 }}
+              name="md-more"
+              size={24}
+              color="#52575D"
+            ></Ionicons>
           </View>
-          
-        </View>
 
-        <View style={styles.infoContainer}>
-          <Text style={[styles.text, { fontWeight: "200", fontSize: 36 }]}>
-            David
-          </Text>
-          <Text style={[styles.text, { color: "#AEB5BC", fontSize: 14 }]}>
-            Photographer
-          </Text>
-        </View>
-
-        <View style={styles.statsContainer}>
-          <View style={styles.statsBox}>
-            <Text style={[styles.text, { fontSize: 24 }]}>3</Text>
-            <Text style={[styles.text, styles.subText]}>Posts</Text>
+          <View style={{ alignSelf: "center" }}>
+            <View style={styles.profileImage}>
+              <Image
+                source={require("../assets/profile.png")}
+                style={styles.image}
+                resizeMode="center"
+              ></Image>
+            </View>
           </View>
-          <View
+
+          <View style={styles.infoContainer}>
+            <Text style={[styles.text, { fontWeight: "200", fontSize: 36 }]}>
+              David
+            </Text>
+            <Text style={[styles.text, { color: "#AEB5BC", fontSize: 14 }]}>
+              Photographer
+            </Text>
+          </View>
+
+          <View style={styles.statsContainer}>
+            <View style={styles.statsBox}>
+              <Text style={[styles.text, { fontSize: 24 }]}>3</Text>
+              <Text style={[styles.text, styles.subText]}>Posts</Text>
+            </View>
+            <View
+              style={[
+                styles.statsBox,
+                {
+                  borderColor: "#DFD8C8",
+                  borderLeftWidth: 0,
+                  borderRightWidth: 0,
+                },
+              ]}
+            >
+              <Text style={[styles.text, { fontSize: 24 }]}>0</Text>
+              <Text style={[styles.text, styles.subText]}>Links</Text>
+            </View>
+          </View>
+
+          <View style={{ marginTop: 32, alignItems: "center" }}>
+            <ScrollView
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+            >
+              <View style={styles.mediaImageContainer}>
+                <Image
+                  source={require("../assets/bunny.jpg")}
+                  style={styles.image}
+                  resizeMode="cover"
+                ></Image>
+              </View>
+              <View style={styles.mediaImageContainer}>
+                <Image
+                  source={require("../assets/tree.jpg")}
+                  style={styles.image}
+                  resizeMode="cover"
+                ></Image>
+              </View>
+              <View style={styles.mediaImageContainer}>
+                <Image
+                  source={require("../assets/colorfultree.jpg")}
+                  style={styles.image}
+                  resizeMode="cover"
+                ></Image>
+              </View>
+            </ScrollView>
+          </View>
+          <Text
             style={[
-              styles.statsBox,
+              styles.subText,
+              styles.recent,
               {
-                borderColor: "#DFD8C8",
-                borderLeftWidth: 1,
-                borderRightWidth: 1,
+                ...Platform.select({
+                  web: {
+                    position: "relative",
+                    left: 750,
+                    fontSize: 12,
+                  },
+                }),
               },
             ]}
           >
-            <Text style={[styles.text, { fontSize: 24 }]}>0</Text>
-            <Text style={[styles.text, styles.subText]}>Links</Text>
-          </View>
-        </View>
+            Recent Activity
+          </Text>
+          <View style={{ alignItems: "center" }}>
+            <View style={styles.recentItem}>
+              <View style={styles.activityIndicator}></View>
+              <View style={{ width: 250 }}>
+                <Text
+                  style={[styles.text, { color: "#41444B", fontWeight: "300" }]}
+                >
+                  {" "}
+                  <Text style={{ fontWeight: "400" }}></Text>{" "}
+                  <Text style={{ fontWeight: "400" }}></Text>
+                </Text>
+              </View>
+            </View>
 
-        <View style={{ marginTop: 32 }}>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            <View style={styles.mediaImageContainer}>
-              <Image
-                source={require("../assets/bunny.jpg")}
-                style={styles.image}
-                resizeMode="cover"
-              ></Image>
-            </View>
-            <View style={styles.mediaImageContainer}>
-              <Image
-                source={require("../assets/tree.jpg")}
-                style={styles.image}
-                resizeMode="cover"
-              ></Image>
-            </View>
-            <View style={styles.mediaImageContainer}>
-              <Image
-                source={require("../assets/colorfultree.jpg")}
-                style={styles.image}
-                resizeMode="cover"
-              ></Image>
-            </View>
-          </ScrollView>
-        </View>
-        <Text style={[styles.subText, styles.recent]}>Recent Activity</Text>
-        <View style={{ alignItems: "center" }}>
-          <View style={styles.recentItem}>
-            <View style={styles.activityIndicator}></View>
-            <View style={{ width: 250 }}>
-              <Text
-                style={[styles.text, { color: "#41444B", fontWeight: "300" }]}
-              >
-                {" "}
-                <Text style={{ fontWeight: "400" }}></Text> {" "}
-                <Text style={{ fontWeight: "400" }}></Text>
-              </Text>
+            <View style={styles.recentItem}>
+              <View style={styles.activityIndicator}></View>
+              <View style={{ width: 250 }}>
+                <Text
+                  style={[styles.text, { color: "#41444B", fontWeight: "300" }]}
+                >
+                  {" "}
+                  <Text style={{ fontWeight: "400" }}></Text>
+                </Text>
+              </View>
             </View>
           </View>
-
-          <View style={styles.recentItem}>
-            <View style={styles.activityIndicator}></View>
-            <View style={{ width: 250 }}>
-              <Text
-                style={[styles.text, { color: "#41444B", fontWeight: "300" }]}
-              >
-                {" "}
-                <Text style={{ fontWeight: "400" }}></Text>
-              </Text>
-            </View>
-          </View>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+        </ScrollView>
+      </SafeAreaView>
     </ImageBackground>
   );
 }
@@ -137,7 +161,7 @@ const styles = StyleSheet.create({
     backgroundColor: "pink",
   },
   text: {
-    fontFamily: Platform.OS === "ios" ? "HelveticaNeue": "",
+    fontFamily: Platform.OS === "ios" ? "HelveticaNeue" : "",
     color: "#52575D",
   },
   image: {
@@ -187,6 +211,11 @@ const styles = StyleSheet.create({
   statsBox: {
     alignItems: "center",
     flex: 1,
+    ...Platform.select({
+      web: {
+        marginHorizontal: 10,
+      },
+    }),
   },
   mediaImageContainer: {
     width: 180,
@@ -194,6 +223,9 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     overflow: "hidden",
     marginHorizontal: 10,
+    ...Platform.select({
+      web: {},
+    }),
   },
   recent: {
     marginLeft: 78,
