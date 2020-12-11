@@ -1,48 +1,64 @@
 import React from "react";
-import { View, Text, StyleSheet, FlatList, Image } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  Image,
+  Platform,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import moment from "moment";
 
 const posts = [
   {
     id: "1",
-    name: "Jovanni Solana",
-    text: "klafnalksnfa slknfa klsalk nsakl fnasl ",
-    timestamp: 1569109273726,
+    name: "jovanni ",
+    text: "paris looks good ",
+    timestamp: 1607550580000,
     avatar: require("../assets/profile-pic.png"),
-    image: require("../assets/profile.png"),
+    image: {
+      uri:
+        "https://cdn.discordapp.com/attachments/636237427769344010/786374368670384148/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.png",
+    },
   },
   {
     id: "2",
     name: "Brian Caldy",
-    text: "klafnalksnfa slknfa klsalk nsakl fnasl ",
-    timestamp: 1569109273726,
+    text: "i love tekashi 69 ",
+    timestamp: 1607464180000,
     avatar: require("../assets/profile-pic.png"),
-    image: require("../assets/profile.png"),
+    image: {
+      uri:
+        "https://cdn.discordapp.com/attachments/636237427769344010/786378130390646784/Take_in_the_Scenery.png",
+    },
   },
   {
     id: "3",
     name: "David NASA",
-    text: "klafnalksnfa slknfa klsalk nsakl fnasl ",
-    timestamp: 1569109273726,
+    text: "nice webcam ",
+    timestamp: 1607291380000,
     avatar: require("../assets/profile-pic.png"),
     image: require("../assets/profile.png"),
   },
   {
     id: "4",
-    name: "Dr Wenjia",
-    text: "klafnalksnfa slknfa klsalk nsakl fnasl ",
-    timestamp: 1569109273726,
+    name: "Sunny GAMER",
+    text: "hello i am sunny ",
+    timestamp: 1607204980000,
     avatar: require("../assets/profile-pic.png"),
     image: require("../assets/profile.png"),
   },
   {
     id: "5",
     name: "Joe Biden",
-    text: "klafnalksnfa slknfa klsalk nsakl fnasl ",
-    timestamp: 1569109273726,
+    text: "LET'S GOOOOOOOOOOOOOOOOOO",
+    timestamp: 1607032180000,
     avatar: require("../assets/profile-pic.png"),
-    image: require("../assets/profile.png"),
+    image: {
+      uri:
+        "https://cdn.discordapp.com/attachments/636237427769344010/786379848402600006/2020-12-08T193029Z_418214462_RC27JK9JKJJG_RTRMADP_3_USA-BIDEN.png",
+    },
   },
 ];
 
@@ -110,27 +126,32 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#EFECF4",
+    backgroundColor: "#121212",
+    alignItems: Platform.OS === "web" ? "center" : undefined,
   },
   header: {
     paddingTop: 64,
     paddingBottom: 16,
-    backgroundColor: "#FFF",
+    backgroundColor: "#121212",
     alignItems: "center",
     justifyContent: "center",
     borderBottomWidth: 1,
     borderBottomColor: "#EBECF4",
-    shadowColor: "#454D65",
+    shadowColor: "#fff",
     shadowOffset: { height: 5 },
     shadowRadius: 15,
     shadowOpacity: 0.2,
     zIndex: 10,
   },
+  headerTitle: {
+    fontFamily: "arial",
+    color: "#fff",
+  },
   feed: {
     marginHorizontal: 16,
   },
   feedItem: {
-    backgroundColor: "#FFF",
+    backgroundColor: "#121212",
     borderRadius: 5,
     padding: 8,
     flexDirection: "row",
@@ -149,12 +170,17 @@ const styles = StyleSheet.create({
   },
   timestamp: {
     fontSize: 11,
-    color: "#838899",
+    color: "#fff",
     marginTop: 16,
   },
+  post: {
+    fontFamily: "arial",
+    color: "#fff",
+  },
   postImage: {
-    width: undefined,
-    height: 150,
+    width: Platform.OS === "web" ? 500 : undefined,
+    height: Platform.OS === "web" ? 500 : 150,
+    resizeMode: Platform.OS === "web" ? "contain" : undefined,
     borderRadius: 5,
     marginVertical: 16,
   },
