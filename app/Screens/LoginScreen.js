@@ -5,6 +5,7 @@ import * as Google from "expo-auth-session/providers/google";
 import firebase from "firebase";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import HomeScreen from "../Screens/HomeScreen";
 import {
   Platform,
   Button,
@@ -44,7 +45,7 @@ export default function App({ navigation: { navigate } }) {
 
       const credential = firebase.auth.GoogleAuthProvider.credential(id_token);
       firebase.auth().signInWithCredential(credential);
-      navigate("HomeScreen");
+      navigate("Profile");
     }
   }, [response]);
 

@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   post: {
-    fontFamily: "arial",
+    fontFamily: Platform.OS === "ios" ? "Arial" : "normal",
     color: "#fff",
   },
   postImage: {
