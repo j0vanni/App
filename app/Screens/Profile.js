@@ -12,6 +12,7 @@ import {
   Platform,
 } from "react-native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import userInfo from "../config/userInfo";
 
 export default function App({ navigation }) {
   return (
@@ -42,16 +43,16 @@ export default function App({ navigation }) {
           <View style={{ alignSelf: "center" }}>
             <View style={styles.profileImage}>
               <Image
-                source={require("../assets/profile.png")}
-                style={styles.image}
+                source={{ uri: userInfo.userPP }}
+                style={[styles.image, { resizeMode: "stretch" }]}
                 resizeMode="center"
-              ></Image>
+              />
             </View>
           </View>
 
           <View style={styles.infoContainer}>
             <Text style={[styles.text, { fontWeight: "200", fontSize: 36 }]}>
-              David
+              {userInfo.userName}
             </Text>
             <Text style={[styles.text, { color: "#AEB5BC", fontSize: 14 }]}>
               Photographer
@@ -161,7 +162,7 @@ const styles = StyleSheet.create({
     backgroundColor: "pink",
   },
   text: {
-    fontFamily: Platform.OS === "ios" ? "HelveticaNeue" : "",
+    fontFamily: Platform.OS === "ios" ? "HelveticaNeue" : "normal",
     color: "#52575D",
   },
   image: {

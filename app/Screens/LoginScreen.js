@@ -6,6 +6,7 @@ import firebase from "firebase";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../Screens/HomeScreen";
+import userInfo from "../config/userInfo";
 import {
   Platform,
   Button,
@@ -48,6 +49,18 @@ export default function App({ navigation: { navigate } }) {
       navigate("Profile");
     }
   }, [response]);
+
+  var user = firebase.auth().currentUser;
+
+  if (user != null) {
+    user.providerData.forEach((profile) => {
+      userInfo.userEmail = profile.email;
+      userInfo.userName = profile.displayName;
+      userInfo.userPP = profile.photoURL;
+
+      console.log("info changed");
+    });
+  }
 
   return (
     <ImageBackground
